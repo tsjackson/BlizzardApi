@@ -1,11 +1,12 @@
 package com.example.finalprojectremake.data
 
 import com.example.finalprojectremake.util.AppConstants
+import com.example.finalprojectremake.util.AppConstants.URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
 
@@ -27,10 +28,16 @@ object ApiFactory {
         .addInterceptor(authInterceptor)
         .build()
 
-    fun retrofit(): Retrofit = Retrofit.Builder()
-        .client(blizzardClient)
-        .baseUrl(AppConstants.URL)
-        .addConverterFactory(MoshiConverterFactory.create())
+//    fun retrofit(): Retrofit = Retrofit.Builder()
+//        .client(blizzardClient)
+//        .baseUrl(URL)
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//        .build()
+
+    fun getLoginRetrofit(): Retrofit = Retrofit.Builder()
+        .baseUrl(URL)
+        .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 }

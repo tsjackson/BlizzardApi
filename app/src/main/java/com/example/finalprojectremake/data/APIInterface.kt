@@ -5,10 +5,10 @@ import retrofit2.http.Field
 import retrofit2.http.POST
 
 
-interface HearthstoneApi {
+interface APIInterface {
     @POST("/token?grant_type=client_credentials")
     fun insertUser(
         @Field("user") user: String?,
         @Field("password") password: String?
-    ): Call<>
+    ): Call<LoginResponse>
 }

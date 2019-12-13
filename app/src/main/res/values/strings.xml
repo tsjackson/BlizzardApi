@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FinalProjectRemake</string>
+    <string name="btn_loginButtonText">Press to View Cards</string>
+
+<!--    Formatted Strings-->
+<!--    Descriptions-->
+    <string name="des_iv_hearthstone_itemLayout">Hearthstone Card</string>
 </resources>

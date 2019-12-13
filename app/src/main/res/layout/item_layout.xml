@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
         <ImageView
             android:id="@+id/imageView"
+            android:contentDescription="@string/des_iv_hearthstone_itemLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/sym_def_app_icon" />
