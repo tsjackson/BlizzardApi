@@ -48,6 +48,7 @@ object RetrofitFactory {
         .client(blizzardAuthToken)
         .baseUrl(AppConstants.URL)
         .addConverterFactory(MoshiConverterFactory.create())
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
     fun retrofit(): Retrofit = Retrofit.Builder()
