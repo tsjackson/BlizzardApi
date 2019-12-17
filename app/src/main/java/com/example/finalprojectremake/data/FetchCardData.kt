@@ -36,7 +36,7 @@ data class Card(
     val text: String
 )
 data class CardDataResponse(
-    val cards: List<Card>
+    val results: List<Card>
 )
 interface BlizzardApi{
     @GET("/cards?locale=en_US&{access_token}")

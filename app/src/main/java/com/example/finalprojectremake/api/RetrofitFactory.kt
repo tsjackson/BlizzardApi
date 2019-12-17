@@ -1,4 +1,4 @@
-package com.example.finalprojectremake.data
+package com.example.finalprojectremake.api
 
 import com.example.finalprojectremake.util.AppConstants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object ApiFactory {
+object RetrofitFactory {
     private val authKeyInterceptor = Interceptor { chain ->
         val newUrl = chain.request().url()
             .newBuilder()
@@ -37,9 +37,18 @@ object ApiFactory {
             .build()
         chain.proceed(newRequest)
     }
+    val blizzardAuthToken: OkHttpClient? = OkHttpClient()
+        .newBuilder()
+        .addInterceptor(authKeyInterceptor)
+        .build()
     val blizzardCardData: OkHttpClient? = OkHttpClient()
         .newBuilder()
         .addInterceptor(authInterceptor)
+        .build()
+    fun authRetrofit(): Retrofit = Retrofit.Builder()
+        .client(blizzardAuthToken)
+        .baseUrl(AppConstants.URL)
+        .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
     fun retrofit(): Retrofit = Retrofit.Builder()
@@ -48,6 +57,4 @@ object ApiFactory {
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
-
-    val blizzardApi : BlizzardApi = retrofit().create(BlizzardApi::class.java)
 }

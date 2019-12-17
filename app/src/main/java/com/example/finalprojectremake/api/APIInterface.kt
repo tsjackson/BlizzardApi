@@ -1,5 +1,7 @@
-package com.example.finalprojectremake.data
+package com.example.finalprojectremake.api
 
+import com.example.finalprojectremake.data.AuthToken
+import com.example.finalprojectremake.data.CardDataResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Response
