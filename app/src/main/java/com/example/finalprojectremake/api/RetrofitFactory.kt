@@ -8,22 +8,21 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitFactory {
-    private val authKeyInterceptor = Interceptor { chain ->
-        val newUrl = chain.request().url()
-            .newBuilder()
-            .addQueryParameter("client_id",AppConstants.clientId_api_key)
-            .addQueryParameter("client_secret",AppConstants.clientSecret_api_key)
-            .build()
-        val newRequest = chain.request()
-            .newBuilder()
-            .url(newUrl)
-            .build()
-        chain.proceed(newRequest)
-    }
+//    private val authKeyInterceptor = Interceptor { chain ->
+//        val newUrl = chain.request().url()
+//            .newBuilder()
+//            .addQueryParameter("client_id",AppConstants.clientId_api_key)
+//            .addQueryParameter("client_secret",AppConstants.clientSecret_api_key)
+//            .build()
+//        val newRequest = chain.request()
+//            .newBuilder()
+//            .url(newUrl)
+//            .build()
+//        chain.proceed(newRequest)
+//    }
     //OkHttpClient for sendingURL
     val blizzardAuthKey = OkHttpClient()
         .newBuilder()
-        .addInterceptor(authKeyInterceptor)
         .build()
     //TODO pass authkey from blizzardAuthKey to blizzardCardData
     private val authInterceptor = Interceptor { chain ->
@@ -39,7 +38,7 @@ object RetrofitFactory {
     }
     val blizzardAuthToken: OkHttpClient? = OkHttpClient()
         .newBuilder()
-        .addInterceptor(authKeyInterceptor)
+        .authenticator(TokenAuthenticator())
         .build()
     val blizzardCardData: OkHttpClient? = OkHttpClient()
         .newBuilder()
