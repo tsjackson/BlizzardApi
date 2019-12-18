@@ -19,5 +19,5 @@ interface BlizzardApiInterface {
     ): Call <AuthToken>
 
     @GET("/cards?locale=en_US&{access_token}")
-    fun getCardData(@Path("access_token") access_token: String): Deferred<Response<CardData>>
+    fun fetchCardDataAsync(@Path("access_token") access_token: String): Deferred<Response<CardData>>
 }
