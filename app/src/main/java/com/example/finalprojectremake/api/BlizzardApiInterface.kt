@@ -13,7 +13,7 @@ import retrofit2.http.Path
 
 interface BlizzardApiInterface {
     @POST("/token?grant_type=client_credentials")
-    fun getToken(
+    fun sendApiToken(
         @Field("clientId_api_key") clientId_api_key: String,
         @Field("clientSecret_api_key") clientSecret_api_key: String
     ): Call <AuthToken>
