@@ -16,7 +16,7 @@ interface APIInterface {
     fun getToken(
         @Field("clientId_api_key") clientId_api_key: String,
         @Field("clientSecret_api_key") clientSecret_api_key: String
-    ): Call<AuthToken>
+    ): Call <AuthToken>
 
     @GET("/cards?locale=en_US&{access_token}")
     fun getCardData(@Path("access_token") access_token: String): Deferred<Response<CardData>>
