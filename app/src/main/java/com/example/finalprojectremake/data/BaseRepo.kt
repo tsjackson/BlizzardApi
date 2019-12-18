@@ -5,7 +5,7 @@ import com.example.finalprojectremake.util.Output
 import retrofit2.Response
 import java.io.IOException
 
-open class BaseRepository {
+open class BaseRepo {
     suspend fun <T : Any> safeApiCall(call : suspend()-> Response<T>, error : String) :  T?{
         val result = newsApiOutput(call, error)
         var output : T? = null

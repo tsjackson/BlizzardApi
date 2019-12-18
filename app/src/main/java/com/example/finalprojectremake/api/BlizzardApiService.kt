@@ -33,5 +33,5 @@ object BlizzardApiService {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val blizzardApiInterface: BlizzardApiInterface = getRetrofit().create(BlizzardApiInterface::class.java)
+    val blizzardApi: BlizzardApiInterface = getRetrofit().create(BlizzardApiInterface::class.java)
 }
