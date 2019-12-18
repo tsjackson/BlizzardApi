@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object BlizzardApiInterface {
+object BlizzardApiService {
     //TODO pass authkey from blizzardAuthKey to blizzardCardData
     private val authInterceptor = Interceptor { chain ->
         val newUrl = chain.request().url()
@@ -32,5 +32,6 @@ object BlizzardApiInterface {
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
+
     val blizzardApi: APIInterface = getRetrofit().create(APIInterface::class.java)
 }

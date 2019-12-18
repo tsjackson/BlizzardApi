@@ -1,7 +1,7 @@
 package com.example.finalprojectremake.api
 
 import com.example.finalprojectremake.data.AuthToken
-import com.example.finalprojectremake.data.CardDataResponse
+import com.example.finalprojectremake.data.CardData
 import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Response
@@ -19,5 +19,5 @@ interface APIInterface {
     ): Call<AuthToken>
 
     @GET("/cards?locale=en_US&{access_token}")
-    fun getCards(@Path("access_token") access_token: String): Deferred<Response<CardDataResponse>>
+    fun getCardData(@Path("access_token") access_token: String): Deferred<Response<CardData>>
 }

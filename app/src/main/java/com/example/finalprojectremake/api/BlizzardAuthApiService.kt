@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object RetrofitAuthFactory {
+object BlizzardAuthApiService {
     val blizzardAuthToken: OkHttpClient = OkHttpClient()
         .newBuilder()
         .authenticator(TokenAuthenticator())
@@ -18,5 +18,5 @@ object RetrofitAuthFactory {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val getAuthToken: RetrofitAuthFactory = authRetrofit().create(RetrofitAuthFactory::class.java)
+    val getAuthToken: BlizzardAuthApiService = authRetrofit().create(BlizzardAuthApiService::class.java)
 }
