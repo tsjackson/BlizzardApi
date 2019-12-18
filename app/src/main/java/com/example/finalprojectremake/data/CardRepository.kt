@@ -1,9 +1,7 @@
 package com.example.finalprojectremake.data
 
-import com.example.finalprojectremake.api.BlizzardApiService
+import com.example.finalprojectremake.api.BlizzardApiInterface
 
-public class CardRepository(private val api: BlizzardApiService){
-    fun getCardData(): MutableList<Card>{
-        return getCardData()
-    }
+public class CardRepository(private val blizzardApiInterface: BlizzardApiInterface){
+
 }

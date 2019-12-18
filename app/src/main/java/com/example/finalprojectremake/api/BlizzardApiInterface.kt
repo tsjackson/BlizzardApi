@@ -11,7 +11,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 
-interface APIInterface {
+interface BlizzardApiInterface {
     @POST("/token?grant_type=client_credentials")
     fun getToken(
         @Field("clientId_api_key") clientId_api_key: String,
