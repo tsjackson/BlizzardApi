@@ -1,13 +1,15 @@
 package com.example.finalprojectremake.data
 
-import kotlinx.coroutines.Deferred
-import retrofit2.Response
-import retrofit2.http.GET
-
 data class AuthToken(
     val access_token: String,
     val expires_in: Int,
     val token_type: String
+)
+data class CardData(
+    val cardCount: Int,
+    val cards: List<Card>,
+    val page: Int,
+    val pageCount: Int
 )
 
 data class Card(
@@ -35,10 +37,3 @@ data class Card(
     val slug: String,
     val text: String
 )
-data class CardDataResponse(
-    val results: List<Card>
-)
-interface BlizzardApi{
-    @GET("/cards?locale=en_US&{access_token}")
-    fun getAllCardsAsync(): Deferred<Response<CardDataResponse>>
-}
