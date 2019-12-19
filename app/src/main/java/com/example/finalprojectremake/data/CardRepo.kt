@@ -9,7 +9,7 @@ public class CardRepo(private val apiInterface: BlizzardApiInterface) : BaseRepo
         authToken.run {  }
         return safeApiCall(
             //await the result of deferred type
-            call = { apiInterface.fetchCardDataAsync(getAuthToken.toString()).await() },
+            call = { apiInterface.fetchCardDataAsync(authToken.body()?.access_token?: String()).await() },
             error = "Error Fetching Card Data"
         //convert to mutable list
         )?.cards?.toMutableList()

@@ -85,4 +85,5 @@ dependencies {
 
     //Gson
     implementation "com.squareup.retrofit2:converter-gson:$gson_verson"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
 }

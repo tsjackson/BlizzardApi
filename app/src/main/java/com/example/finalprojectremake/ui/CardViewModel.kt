@@ -1,5 +1,7 @@
 package com.example.finalprojectremake.ui
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.finalprojectremake.api.BlizzardApiService
@@ -20,13 +22,18 @@ class CardViewModel : ViewModel(){
     //live data that will be populated as cards update
     private val cardLiveData= MutableLiveData<MutableList<Card>>()
     fun getLatestCards(){
+
         //launch the coroutine scope
         scope.launch {
             //get latest cards from the card repo
             val latestCards = cardRepository.getCardData()
             //post the value inside live data
+            Log.d("ABC", "Latest cards contains, $latestCards")
             cardLiveData.postValue(latestCards)
         }
+    }
+    fun getCards(): LiveData<MutableList<Card>>{
+        return cardLiveData
     }
     fun cancelRequest()= coroutineContext.cancel()
 }
